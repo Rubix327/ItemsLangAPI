@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<project name="ItemsLangAPI" default="Build">
+
+	<property name="server.path" value="C:\MCServers\TestServer1.12"/>
+
+	<xmlproperty file="pom.xml" prefix="pom" keeproot="false" />
+	<property name="plugin.version" value="${pom.version}"/>
+
+	<target name="init">
+		<buildnumber/>
+	</target>
+
+	<target name="Build">
+		<delete>
+			<fileset dir="${server.path}\plugins\" includes="${ant.project.name}*"/>
+		</delete>
+		<buildnumber/>
+		<jar jarfile="${server.path}\plugins\${ant.project.name}-${plugin.version}-b${build.number}.jar"
+			 basedir="./target/classes/" includes="**/*">
+		</jar>
+	</target>
+
+</project> 

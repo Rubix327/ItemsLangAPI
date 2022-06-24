@@ -4,8 +4,9 @@
 This API will help you to translate almost every game object (items, enchantments, effects, ... see below) to any language you like.
 
 ## Use cases
-- You want to send player a message with custom item name depending on their language;
+- You want to send player a message with an item name depending on their language;
 - You want to show player a GUI with language-based namings (e.g., items translated to their own language);
+- You want to get the vanilla name of an item (enchantment, etc.) knowing only an item id (with Bukkit API it is impossible to get a vanilla name of an item)
 - You want to use localized item/enchantments/etc names anywhere else.
 
 ## Features (Methods)

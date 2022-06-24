@@ -39,7 +39,7 @@ yourself by changing this API for your specific version.
 ## How to compile
 
 **Maven:**<br>
-Please use the latest release version instead of `1.0.0`
+Please use the latest release version instead of `1.0.1`
 ```maven
 <repositories>
     <repository>
@@ -52,19 +52,19 @@ Please use the latest release version instead of `1.0.0`
     <dependency>
         <groupId>com.github.Rubix327</groupId>
         <artifactId>ItemsLangAPI</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </dependency>
 </dependencies>
 ```
 
 **Gradle:**<br>
-Please use the latest release version instead of `1.0.0`
+Please use the latest release version instead of `1.0.1`
 ```gradle
 repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    compileOnly "com.github.Rubix327:ItemsLangAPI:1.0.0"
+    compileOnly "com.github.Rubix327:ItemsLangAPI:1.0.1"
 }
 ```
 

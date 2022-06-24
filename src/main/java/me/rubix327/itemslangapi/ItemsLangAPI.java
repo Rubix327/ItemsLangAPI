@@ -67,6 +67,8 @@ public class ItemsLangAPI {
         return instance;
     }
 
+    private ItemsLangAPI(){ }
+
     /**
      * Load all the 123 languages available in the game.<br>
      * If they all are not necessary, it is recommended using
@@ -116,7 +118,12 @@ public class ItemsLangAPI {
         }
 
         for (String key : config.getKeys(true)) {
-            items.put(key, config.getString(key));
+            String value = config.getString(key);
+
+            if (value == null) continue;
+            if (value.startsWith("MemorySection")) continue;
+
+            items.put(key, value);
         }
 
         return items;

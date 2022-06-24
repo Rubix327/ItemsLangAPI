@@ -6,7 +6,7 @@
 	<groupId>me.rubix327</groupId>
 	<artifactId>itemslangapi</artifactId>
 	<name>ItemsLangApi</name>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 
 	<properties>

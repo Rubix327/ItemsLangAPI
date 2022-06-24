@@ -31,6 +31,10 @@ enum Category {
      */
     MATERIAL("item.minecraft.", Material.class, true),
     /**
+     * Music discs. We display their description, not name.
+     */
+    MUSIC_DISC("item.minecraft.$name.desc", ItemStack.class, true),
+    /**
      * Potion Effects<br>
      * Examples: Speed, Instant Health, Poison.
      */
@@ -95,7 +99,7 @@ enum Category {
         if (this.isDoAdditionalChecks()){
             if (this.getClazz() == ItemStack.class){
                 ItemStack item = (ItemStack) object;
-                if (item.getType().isBlock()){
+                if (item.getType().isBlock() || item.getType().toString().toLowerCase().contains("skull")){
                     if (Comp.isLegacy()){
                         return Category.BLOCK.getNamespace() + Comp.getModernId(item);
                     }
@@ -103,17 +107,31 @@ enum Category {
                 }
                 else{
                     if (Comp.isLegacy()){
+                        if (item.getType().isRecord()){
+                            return Category.MUSIC_DISC.getNamespace().replace("$name", Comp.getModernId(item));
+                        }
                         return Category.ITEM.getNamespace() + Comp.getModernId(item);
+                    }
+                    if (item.getType().isRecord()){
+                        return Category.MUSIC_DISC.getNamespace().replace("$name", item.getType().toString());
                     }
                     return Category.ITEM.getNamespace() + item.getType();
                 }
             }
             else if (this.getClazz() == Material.class){
                 Material mat = (Material) object;
-                if (mat.isBlock()){
-                    return Category.BLOCK.getNamespace() + Comp.getModernId(new ItemStack(mat));
+                if (Comp.isLegacy()){
+                    if (mat.isBlock()){
+                        return Category.BLOCK.getNamespace() + Comp.getModernId(new ItemStack(mat));
+                    }
+                    return Category.ITEM.getNamespace() + Comp.getModernId(new ItemStack(mat));
                 }
-                return Category.ITEM.getNamespace() + Comp.getModernId(new ItemStack(mat));
+                else{
+                    if (mat.isBlock()){
+                        return Category.BLOCK.getNamespace() + mat;
+                    }
+                    return Category.ITEM.getNamespace() + mat;
+                }
             }
             else if (this.getClazz() == PotionEffectType.class){
                 Comp.PotionEffectType compPet = Comp.PotionEffectType.valueOf(((PotionEffectType) object).getName());

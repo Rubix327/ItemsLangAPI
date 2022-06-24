@@ -51,7 +51,7 @@ Please use the latest release version instead of `1.0.0`
 <dependencies>
     <dependency>
         <groupId>com.github.Rubix327</groupId>
-        <artifactId>Foundation</artifactId>
+        <artifactId>ItemsLangAPI</artifactId>
         <version>1.0.0</version>
     </dependency>
 </dependencies>

@@ -5,6 +5,6 @@ author: ${author}
 api-version: 1.13
 commands:
   ila:
-    description: the main command
-    usage: /<command> <test | reload>
+    description: ItemsLangAPI main command.
+    usage: /<command>
     default: op

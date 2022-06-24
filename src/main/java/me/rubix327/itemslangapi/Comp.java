@@ -404,13 +404,13 @@ public class Comp {
                 "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "1.12");
 
         String version = Bukkit.getBukkitVersion().replace("-R0.1-SNAPSHOT", "");
-        List<String> currentVersion = Arrays.stream(version.split(":")).collect(Collectors.toList());
+        List<String> currentVersion = Arrays.stream(version.split("\\.")).collect(Collectors.toList());
         if (currentVersion.size() < 3){
             currentVersion.add("0");
         }
 
         for (String v : legacy){
-            String[] ver = v.split(":");
+            String[] ver = v.split("\\.");
             if (currentVersion.get(0).equals(ver[0]) && currentVersion.get(1).equals(ver[1])){
                 return true;
             }

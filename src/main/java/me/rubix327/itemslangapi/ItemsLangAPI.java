@@ -26,11 +26,12 @@ import java.util.HashMap;
 public class ItemsLangAPI {
 
     private static final ItemsLangAPI instance = new ItemsLangAPI();
+    private static final String prefix = "[ItemsLangApi] ";
 
     /**
      * The warning message sent when trying to translate a message to a non-existent Lang.
      */
-    private final String warning = "Some plugin is trying to translate an object to a non-existent language ($lang). " +
+    private final String warning = prefix + "Some plugin is trying to translate an object to a non-existent language ($lang). " +
             "Object is now translated into English (en_us).";
     /**
      * Should we hide the {@link #warning}?
@@ -83,7 +84,7 @@ public class ItemsLangAPI {
      * Load the specified languages.
      */
     public void load(Lang... langs) {
-        Bukkit.getLogger().info("Loading language files...");
+        Bukkit.getLogger().info(prefix + "Loading language files...");
         int counter = 0;
         for (Lang lang : langs){
             map.put(lang, loadOne(langPath.replace("$file", lang.toString().toLowerCase())));
@@ -92,7 +93,7 @@ public class ItemsLangAPI {
         if (Comp.isLegacy()){
             legacyToModern.putAll(loadOne("/legacy.yml"));
         }
-        Bukkit.getLogger().info("Loaded " +  counter + " language files successfully.");
+        Bukkit.getLogger().info(prefix + "Loaded " +  counter + " language file(s) successfully.");
     }
 
     /**
@@ -105,7 +106,7 @@ public class ItemsLangAPI {
         BufferedReader reader;
 
         if (file == null){
-            Bukkit.getLogger().warning("File " + path + " does not exist in jar file.");
+            Bukkit.getLogger().warning(prefix + "File " + path + " does not exist in jar file.");
             return items;
         }
 
